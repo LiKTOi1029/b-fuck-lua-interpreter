@@ -6,11 +6,12 @@ __BFCOMMANDS = {
 	[">"] = BFLeft,
 	["."] = io.write,
 	[","] = io.read,
-	["["] = nil,
-	["]"] = nil,
+	["["] = BFLooper,
+	["]"] = 0,
 }
 __POINTER = 1
 __BFSTACK = {0}
+__BFTABLE = BFFileToTable()
 
 function BFFileToTable()
 	local ProcessedFile = io.open(__BFFILE, "r")
@@ -38,14 +39,14 @@ function BFSubtractor(Cell)
 	return Cell
 end
 
-function BFRight()
+function BFRight(Cell)
 	__POINTER = __POINTER + 1
 	if not __BFSTACK[__POINTER] then
 		table.insert(__BFSTACK, __POINTER, 0)
 	end
 end
 
-function BFLeft()
+function BFLeft(Cell)
 	__POINTER = __POINTER - 1
 	if not __BFSTACK[__POINTER] then
 		table.insert(__BFSTACK, __POINTER, 0)
@@ -53,16 +54,20 @@ function BFLeft()
 end
 
 function BFLooper(Cell)
-	while Cell > 0 do
-		-- pending
+	while Cell > __BFCOMMANDS["]"] do
+		
 	end
 end
 
 function BFMain()
 	local Cell = __BFSTACK[__POINTER]
+	for Position, Type in ipairs(__BFTABLE) do
+		__BFCOMMANDS[Type](Cell)
+	end
 end
-
 
 if #arg ~= 1 then
 	error("Expected 1 file input, instead got "..#arg)
 end
+
+BFMain()
