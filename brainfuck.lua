@@ -19,6 +19,7 @@ function BFFileToTable()
 	for Position = 1, string.len(ProcessedFile) do
 		table.insert(ParsingTable, ProcessedFile:sub(Position,Position))
 	end
+	return ParsingTable
 end
 
 function BFAdder(Cell)
