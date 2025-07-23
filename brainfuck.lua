@@ -2,14 +2,15 @@ __BFFILE = arg[#arg]
 __BFCOMMANDS = {
 	["+"] = BFAdder,
 	["-"] = BFSubtractor,
-	["<"] = 1,
-	[">"] = -1,
+	["<"] = BFRight,
+	[">"] = BFLeft,
 	["."] = io.write,
 	[","] = io.read,
 	["["] = nil,
 	["]"] = nil,
-	
 }
+__POINTER = 1
+__BFSTACK = {0}
 
 function BFAdder(Cell)
 	Cell = Cell + 1
@@ -22,6 +23,24 @@ function BFSubtractor(Cell)
 	if Cell < 0 then
 		Cell = 255
 	end
+end
+
+function BFRight()
+	__POINTER = __POINTER + 1
+end
+
+function BFLeft()
+	__POINTER = __POINTER - 1
+end
+
+function BFLooper(Cell)
+	while Cell > 0 do
+		-- pending
+	end
+end
+
+function BFMain()
+	local Cell = __BFSTACK[__POINTER]
 end
 
 
