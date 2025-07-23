@@ -27,6 +27,7 @@ function BFAdder(Cell)
 	if Cell > 255 then
 		Cell = 0
 	end
+	return Cell
 end
 
 function BFSubtractor(Cell)
@@ -34,6 +35,7 @@ function BFSubtractor(Cell)
 	if Cell < 0 then
 		Cell = 255
 	end
+	return Cell
 end
 
 function BFRight()
