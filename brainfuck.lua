@@ -45,6 +45,7 @@ function BFRight(Cell)
 	if not __BFSTACK[__POINTER] then
 		table.insert(__BFSTACK, __POINTER, 0)
 	end
+	return Cell
 end
 
 function BFLeft(Cell)
@@ -52,27 +53,30 @@ function BFLeft(Cell)
 	if not __BFSTACK[__POINTER] then
 		table.insert(__BFSTACK, __POINTER, 0)
 	end
+	return Cell
 end
 
 function BFLooper(Cell)
 	while Cell > __BFCOMMANDS["]"] do
 		
 	end
+	return Cell
 end
 
 function BFReader(Cell)
-	Cell = io.read(1)
+	Cell = io.read(string.byte(1))
 	return Cell
 end
 
 function BFWriter(Cell)
 	io.write(Cell)
+	return Cell
 end
 
 function BFMain()
 	local Cell = __BFSTACK[__POINTER]
 	for Position, Type in ipairs(__BFTABLE) do
-		__BFCOMMANDS[Type](Cell)
+		Cell = __BFCOMMANDS[Type](Cell)
 	end
 end
 
