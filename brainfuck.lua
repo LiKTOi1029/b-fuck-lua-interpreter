@@ -1,7 +1,7 @@
 __BFFILE = arg[#arg]
 __BFCOMMANDS = {
 	["+"] = BFAdder,
-	["-"] = -1,
+	["-"] = BFSubtractor,
 	["<"] = 1,
 	[">"] = -1,
 	["."] = io.write,
@@ -17,6 +17,12 @@ function BFAdder(Cell)
 		Cell = 0
 	end
 
+function BFSubtractor(Cell)
+	Cell = Cell - 1
+	if Cell < 0 then
+		Cell = 255
+	end
+end
 
 
 if #arg ~= 1 then
