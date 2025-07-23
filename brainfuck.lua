@@ -9,9 +9,6 @@ __BFCOMMANDS = {
 	["["] = BFLooper,
 	["]"] = 0,
 }
-__POINTER = 1
-__BFSTACK = {0}
-__BFTABLE = BFFileToTable()
 
 function BFFileToTable()
 	local ProcessedFile = io.open(__BFFILE, "r")
@@ -22,6 +19,10 @@ function BFFileToTable()
 	end
 	return ParsingTable
 end
+
+__POINTER = 1
+__BFSTACK = {0}
+__BFTABLE = BFFileToTable()
 
 function BFAdder(Cell)
 	Cell = Cell + 1
