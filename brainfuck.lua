@@ -12,11 +12,21 @@ __BFCOMMANDS = {
 __POINTER = 1
 __BFSTACK = {0}
 
+function BFFileToTable()
+	local ProcessedFile = io.open(__BFFILE, "r")
+	ProcessedFile:read("*all")
+	local ParsingTable = {}
+	for Position = 1, string.len(ProcessedFile) do
+		table.insert(ParsingTable, ProcessedFile:sub(Position,Position))
+	end
+end
+
 function BFAdder(Cell)
 	Cell = Cell + 1
 	if Cell > 255 then
 		Cell = 0
 	end
+end
 
 function BFSubtractor(Cell)
 	Cell = Cell - 1
