@@ -38,10 +38,16 @@ end
 
 function BFRight()
 	__POINTER = __POINTER + 1
+	if not __BFSTACK[__POINTER] then
+		table.insert(__BFSTACK, __POINTER, 0)
+	end
 end
 
 function BFLeft()
 	__POINTER = __POINTER - 1
+	if not __BFSTACK[__POINTER] then
+		table.insert(__BFSTACK, __POINTER, 0)
+	end
 end
 
 function BFLooper(Cell)
