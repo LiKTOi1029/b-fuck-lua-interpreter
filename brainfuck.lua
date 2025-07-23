@@ -59,6 +59,15 @@ function BFLooper(Cell)
 	end
 end
 
+function BFReader(Cell)
+	Cell = io.read(1)
+	return Cell
+end
+
+function BFWriter(Cell)
+	io.write(Cell)
+end
+
 function BFMain()
 	local Cell = __BFSTACK[__POINTER]
 	for Position, Type in ipairs(__BFTABLE) do
